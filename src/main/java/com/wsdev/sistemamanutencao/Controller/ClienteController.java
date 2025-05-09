@@ -33,10 +33,11 @@ public class ClienteController
         return clienteRepository.findById( id ).orElse( null );
     }
 
-    @PostMapping
-    public ClienteModel criar( @RequestBody ClienteModel cliente )
+    @PostMapping( "/addcliente" )
+    public String addCliente(@ModelAttribute ClienteModel cliente )
     {
-        return clienteRepository.save( cliente );
+        clienteService.addNewCliente( cliente );
+        return "clienteRegister";
     }
 
     @PutMapping("/{id}")

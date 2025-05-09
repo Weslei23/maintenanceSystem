@@ -24,7 +24,7 @@ public class ClienteService
         return clienteRepository.findById( id );
     }
 
-    public ClienteModel salvar( ClienteModel cliente )
+    public ClienteModel addNewCliente(ClienteModel cliente )
     {
         return clienteRepository.save(cliente);
     }

@@ -14,7 +14,7 @@ public class ManutencaoService
     @Autowired
     private ManutencaoRepository manutencaoRepository;
 
-    public List<ManutencaoModel> listarTodas()
+    public List<ManutencaoModel> getAllMaintenances()
     {
         return manutencaoRepository.findAll();
     }
