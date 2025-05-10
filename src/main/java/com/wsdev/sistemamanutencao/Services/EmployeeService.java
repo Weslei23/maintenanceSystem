@@ -1,5 +1,6 @@
 package com.wsdev.sistemamanutencao.Services;
 
+import com.wsdev.sistemamanutencao.Models.CustomerModel;
 import com.wsdev.sistemamanutencao.Models.EmployeeModel;
 import com.wsdev.sistemamanutencao.Repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,15 +30,15 @@ public class EmployeeService
         return employeeRepository.save( employee );
     }
 
-    public Optional<EmployeeModel> updateEmployee( Long id, EmployeeModel employeeUpdated )
+    public EmployeeModel updateEmployee( Long id, EmployeeModel employeeUpdated )
     {
-        return employeeRepository.findById( id ).map(employee ->
-        {
-            employee.setName( employeeUpdated.getName() );
-            employee.setTelephone( employeeUpdated.getTelephone() );
-            employee.setSpecialty( employeeUpdated.getSpecialty() );
-            return employeeRepository.save( employee );
-        } );
+        EmployeeModel employee = employeeRepository.findById( id ).orElseThrow( () -> new RuntimeException( "Funcionário não encontrado" ) );
+
+        employee.setName( employeeUpdated.getName() );
+        employee.setTelephone( employeeUpdated.getTelephone() );
+        employee.setSpecialty( employeeUpdated.getSpecialty() );
+
+        return employeeRepository.save( employee );
     }
 
     public void deleteEmployeeById( Long id )

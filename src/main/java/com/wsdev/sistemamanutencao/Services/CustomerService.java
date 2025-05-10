@@ -29,16 +29,16 @@ public class CustomerService
         return customerRepository.save( customer );
     }
 
-    public Optional<CustomerModel> updateCustomer( Long id, CustomerModel customerUpdated )
+    public CustomerModel updateCustomer( Long id, CustomerModel customerUpdated )
     {
-        return customerRepository.findById( id ).map(customer ->
-        {
-            customer.setName(customerUpdated.getName());
-            customer.setTelephone(customerUpdated.getTelephone());
-            customer.setEmail(customerUpdated.getEmail());
-            customer.setAddress(customerUpdated.getAddress());
-            return customerRepository.save( customer );
-        } );
+        CustomerModel customer = customerRepository.findById( id ).orElseThrow( () -> new RuntimeException( "Cliente não encontrado" ) );
+
+        customer.setName( customerUpdated.getName() );
+        customer.setTelephone( customerUpdated.getTelephone() );
+        customer.setEmail( customerUpdated.getEmail() );
+        customer.setAddress( customerUpdated.getAddress() );
+
+        return customerRepository.save( customer );
     }
 
     public void deleteCustomerById( Long id )

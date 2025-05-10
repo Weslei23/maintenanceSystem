@@ -1,5 +1,6 @@
 package com.wsdev.sistemamanutencao.Services;
 
+import com.wsdev.sistemamanutencao.Models.CustomerModel;
 import com.wsdev.sistemamanutencao.Models.MaintenanceModel;
 import com.wsdev.sistemamanutencao.Repository.MaintenanceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,17 +30,17 @@ public class MaintenanceService
         return maintenanceRepository.save( maintenance );
     }
 
-    public Optional<MaintenanceModel> updateMaintenance( Long id, MaintenanceModel maintenanceUpdated )
+    public MaintenanceModel updateMaintenance( Long id, MaintenanceModel maintenanceUpdated )
     {
-        return maintenanceRepository.findById( id ).map(maintenance ->
-        {
-            maintenance.setScheduledDate( maintenanceUpdated.getScheduledDate() );
-            maintenance.setDescriptionService( maintenanceUpdated.getDescriptionService() );
-            maintenance.setStatus( maintenanceUpdated.getStatus() );
-            maintenance.setCustomer( maintenanceUpdated.getCustomer() );
-            maintenance.setEmployee( maintenanceUpdated.getEmployee() );
-            return maintenanceRepository.save( maintenance );
-        } );
+        MaintenanceModel maintenance = maintenanceRepository.findById( id ).orElseThrow( () -> new RuntimeException( "Manutenção não encontrada" ) );
+
+        maintenance.setScheduledDate( maintenanceUpdated.getScheduledDate() );
+        maintenance.setDescriptionService( maintenanceUpdated.getDescriptionService() );
+        maintenance.setStatus( maintenanceUpdated.getStatus() );
+        maintenance.setCustomer( maintenanceUpdated.getCustomer() );
+        maintenance.setEmployee( maintenanceUpdated.getEmployee() );
+
+        return maintenanceRepository.save( maintenance );
     }
 
     public void deleteMaintenanceById( Long id )

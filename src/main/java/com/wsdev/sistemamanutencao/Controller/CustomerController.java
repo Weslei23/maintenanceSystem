@@ -38,7 +38,7 @@ public class CustomerController
         return "clienteRegister";
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/{id}" )
     public  CustomerModel updateCustomer( @PathVariable Long id, @RequestBody CustomerModel customerUpdated )
     {
         return customerService.updateCustomer( id, customerUpdated ); // verificar
