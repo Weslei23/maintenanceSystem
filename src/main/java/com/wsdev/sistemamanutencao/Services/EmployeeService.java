@@ -1,7 +1,7 @@
-package com.wsdev.sistemamanutencao.Services;
+package com.wsdev.maintenanceSystem.Services;
 
-import com.wsdev.sistemamanutencao.Models.EmployeeModel;
-import com.wsdev.sistemamanutencao.Repository.EmployeeRepository;
+import com.wsdev.maintenanceSystem.Models.EmployeeModel;
+import com.wsdev.maintenanceSystem.Repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

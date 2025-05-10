@@ -1,4 +1,4 @@
-package com.wsdev.sistemamanutencao.Models;
+package com.wsdev.maintenanceSystem.Models;
 
 import jakarta.persistence.*;
 

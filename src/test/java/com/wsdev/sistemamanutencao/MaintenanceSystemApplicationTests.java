@@ -1,4 +1,4 @@
-package com.wsdev.sistemamanutencao;
+package com.wsdev.maintenanceSystem;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

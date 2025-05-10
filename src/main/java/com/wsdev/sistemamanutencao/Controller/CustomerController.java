@@ -1,8 +1,7 @@
-package com.wsdev.sistemamanutencao.Controller;
+package com.wsdev.maintenanceSystem.Controller;
 
-import com.wsdev.sistemamanutencao.Models.CustomerModel;
-import com.wsdev.sistemamanutencao.Repository.CustomerRepository;
-import com.wsdev.sistemamanutencao.Services.CustomerService;
+import com.wsdev.maintenanceSystem.Models.CustomerModel;
+import com.wsdev.maintenanceSystem.Services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
