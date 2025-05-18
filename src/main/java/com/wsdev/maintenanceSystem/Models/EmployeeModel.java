@@ -1,28 +1,33 @@
-package com.wsdev.sistemamanutencao.Models;
+package com.wsdev.maintenanceSystem.Models;
 
 import jakarta.persistence.*;
 
+import java.time.OffsetDateTime;
 import java.util.List;
 
 @Entity
 @Table( name = "tb_employee" )
 public class EmployeeModel
 {
-        @Id
-        @GeneratedValue( strategy = GenerationType.IDENTITY )
-        private Long id;
 
-        @Column( nullable = false )
-        private String name;
+    @Id
+    @GeneratedValue( strategy = GenerationType.IDENTITY )
+    private Long id;
 
-        @Column( nullable = false )
-        private String telephone;
+    @Column( nullable = false )
+    private String name;
 
-        @Column( nullable = false )
-        private String specialty;
+    @Column( nullable = false )
+    private String telephone;
 
-        @OneToMany( mappedBy = "employee", cascade = CascadeType.ALL )
-        private List<MaintenanceModel> maintenances;
+    @Column( nullable = false )
+    private String specialty;
+
+    @OneToMany( mappedBy = "employee", cascade = CascadeType.ALL )
+    private List<MaintenanceModel> maintenances;
+
+    @Column( nullable = false )
+    private OffsetDateTime createdAt;
 
     public Long getId()
     {
@@ -72,5 +77,15 @@ public class EmployeeModel
     public void setSpecialty( String specialty )
     {
         this.specialty = specialty;
+    }
+
+    public OffsetDateTime getCreatedAt()
+    {
+        return createdAt;
+    }
+
+    public void setCreatedAt( OffsetDateTime createdAt )
+    {
+        this.createdAt = createdAt;
     }
 }

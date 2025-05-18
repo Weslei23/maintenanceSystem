@@ -1,8 +1,7 @@
-package com.wsdev.sistemamanutencao.Controller;
+package com.wsdev.maintenanceSystem.Controller;
 
-import com.wsdev.sistemamanutencao.Models.EmployeeModel;
-import com.wsdev.sistemamanutencao.Repository.EmployeeRepository;
-import com.wsdev.sistemamanutencao.Services.EmployeeService;
+import com.wsdev.maintenanceSystem.Models.EmployeeModel;
+import com.wsdev.maintenanceSystem.Services.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,7 +29,7 @@ public class EmployeeController
     @PostMapping( "addemployee" )
     public EmployeeModel addNewEmployee( @RequestBody EmployeeModel employee )
     {
-        return employeeService.addNewEmployee( employee );
+        return employeeService.addEmployee( employee );
     }
 
     @PutMapping( "/{id}" )

@@ -1,8 +1,8 @@
-package com.wsdev.sistemamanutencao.Services;
+package com.wsdev.maintenanceSystem.Services;
 
-import com.wsdev.sistemamanutencao.Models.CustomerModel;
-import com.wsdev.sistemamanutencao.Models.MaintenanceModel;
-import com.wsdev.sistemamanutencao.Repository.MaintenanceRepository;
+import com.wsdev.maintenanceSystem.Models.CustomerModel;
+import com.wsdev.maintenanceSystem.Models.MaintenanceModel;
+import com.wsdev.maintenanceSystem.Repository.MaintenanceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

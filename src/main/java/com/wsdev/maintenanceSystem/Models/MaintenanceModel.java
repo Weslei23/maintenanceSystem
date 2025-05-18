@@ -1,8 +1,9 @@
-package com.wsdev.sistemamanutencao.Models;
+package com.wsdev.maintenanceSystem.Models;
 
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.time.OffsetDateTime;
 
 @Entity
 @Table( name = "tb_maintenance")
@@ -28,6 +29,9 @@ public class MaintenanceModel
     @ManyToOne
     @JoinColumn( name = "employee_id" )
     private EmployeeModel employee;
+
+    @Column( nullable = false )
+    private OffsetDateTime createdAt;
 
     public Long getId()
     {
@@ -87,5 +91,15 @@ public class MaintenanceModel
     public void setEmployee( EmployeeModel employee )
     {
         this.employee = employee;
+    }
+
+    public OffsetDateTime getCreatedAt()
+    {
+        return createdAt;
+    }
+
+    public void setCreatedAt( OffsetDateTime createdAt )
+    {
+        this.createdAt = createdAt;
     }
 }

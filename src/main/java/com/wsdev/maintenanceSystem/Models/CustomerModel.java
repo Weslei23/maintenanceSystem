@@ -1,7 +1,8 @@
-package com.wsdev.sistemamanutencao.Models;
+package com.wsdev.maintenanceSystem.Models;
 
 import jakarta.persistence.*;
 
+import java.time.OffsetDateTime;
 import java.util.List;
 
 @Entity
@@ -12,20 +13,18 @@ public class CustomerModel
     @GeneratedValue( strategy = GenerationType.IDENTITY )
     private Long id;
 
-    @Column( nullable = false )
     private String name;
 
-    @Column( nullable = false )
     private String telephone;
 
-    @Column( nullable = false )
     private String email;
 
-    @Column( nullable = false )
     private String address;
 
     @OneToMany( mappedBy = "customer", cascade = CascadeType.ALL )
     private List<MaintenanceModel> maintenances;
+
+    private OffsetDateTime createdAt;
 
     public Long getId()
     {
@@ -85,5 +84,15 @@ public class CustomerModel
     public void setName( String name )
     {
         this.name = name;
+    }
+
+    public OffsetDateTime getCreatedAt()
+    {
+        return createdAt;
+    }
+
+    public void setCreatedAt( OffsetDateTime createdAt )
+    {
+        this.createdAt = createdAt;
     }
 }

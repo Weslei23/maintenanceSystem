@@ -1,8 +1,7 @@
-package com.wsdev.sistemamanutencao.Controller;
+package com.wsdev.maintenanceSystem.Controller;
 
-import com.wsdev.sistemamanutencao.Models.MaintenanceModel;
-import com.wsdev.sistemamanutencao.Repository.MaintenanceRepository;
-import com.wsdev.sistemamanutencao.Services.MaintenanceService;
+import com.wsdev.maintenanceSystem.Models.MaintenanceModel;
+import com.wsdev.maintenanceSystem.Services.MaintenanceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,8 +13,6 @@ import java.util.List;
 @RequestMapping( "/maintenances" )
 public class MaintenanceController
 {
-    @Autowired
-    private MaintenanceRepository maintenanceRepository;
     @Autowired
     private MaintenanceService maintenanceService;
 
