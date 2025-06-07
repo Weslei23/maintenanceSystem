@@ -34,7 +34,7 @@ public class CustomerController
 
     @PostMapping( "/addcustomer" )
 //    public String addCustomer( @ModelAttribute CustomerModel customer )
-    public ResponseEntity<CustomerModel> addCustomer(@RequestBody CustomerModel customer )
+    public ResponseEntity<CustomerModel> addCustomer( @RequestBody CustomerModel customer )
     {
         return ResponseEntity.status( HttpStatus.CREATED ).body( customerService.addCustomer( customer ) );
 

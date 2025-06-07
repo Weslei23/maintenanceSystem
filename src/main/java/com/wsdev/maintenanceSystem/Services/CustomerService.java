@@ -26,39 +26,16 @@ public class CustomerService
 
     public CustomerModel addCustomer(CustomerModel customer )
     {
-        if( customer != null )
-        {
-            return customerRepository.save( customer );
-        }
-        else
-        {
-            return null;
-        }
+        return customerRepository.save( customer );
     }
 
     public CustomerModel updateCustomer( Long id, CustomerModel customerUpdated )
     {
         CustomerModel customer = customerRepository.findById( id ).orElseThrow( () -> new RuntimeException( "Cliente não encontrado" ) );
-
-        if( customerUpdated.getName() != null )
-        {
             customer.setName( customerUpdated.getName() );
-        }
-
-        if( customerUpdated.getTelephone() != null )
-        {
             customer.setTelephone( customerUpdated.getTelephone() );
-        }
-
-        if( customerUpdated.getAddress() != null )
-        {
             customer.setAddress( customerUpdated.getAddress() );
-        }
-
-        if( customerUpdated.getEmail() != null )
-        {
             customer.setEmail( customerUpdated.getEmail() );
-        }
 
         return customerRepository.save( customer );
     }

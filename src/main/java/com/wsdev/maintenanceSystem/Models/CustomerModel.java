@@ -1,8 +1,12 @@
 package com.wsdev.maintenanceSystem.Models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import org.hibernate.annotations.CreationTimestamp;
 
-import java.time.OffsetDateTime;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -13,18 +17,23 @@ public class CustomerModel
     @GeneratedValue( strategy = GenerationType.IDENTITY )
     private Long id;
 
+    @NotBlank
     private String name;
 
+    @Pattern( regexp = "^(\\(\\d{2}\\)\\s?|\\d{2})\\d{4,5}-?\\d{4}$", message = "Telefone inválido. Use o formato (11) 91234-5678 ou 11912345678" )
     private String telephone;
 
+    @Email( message = "O campo [email] deve conter um e-mail valído." )
     private String email;
 
-    private String address;
+    @Embedded
+    private AddressModel address;
 
     @OneToMany( mappedBy = "customer", cascade = CascadeType.ALL )
     private List<MaintenanceModel> maintenances;
 
-    private OffsetDateTime createdAt;
+    @CreationTimestamp
+    private LocalDateTime createdAt;
 
     public Long getId()
     {
@@ -46,12 +55,12 @@ public class CustomerModel
         this.maintenances = maintenances;
     }
 
-    public String getAddress()
+    public AddressModel getAddress()
     {
         return address;
     }
 
-    public void setAddress( String address )
+    public void setAddress( AddressModel address )
     {
         this.address = address;
     }
@@ -71,7 +80,7 @@ public class CustomerModel
         return telephone;
     }
 
-    public void setTelephone(String telephone )
+    public void setTelephone( String telephone )
     {
         this.telephone = telephone;
     }
@@ -86,12 +95,12 @@ public class CustomerModel
         this.name = name;
     }
 
-    public OffsetDateTime getCreatedAt()
+    public LocalDateTime getCreatedAt()
     {
         return createdAt;
     }
 
-    public void setCreatedAt( OffsetDateTime createdAt )
+    public void setCreatedAt( LocalDateTime createdAt )
     {
         this.createdAt = createdAt;
     }

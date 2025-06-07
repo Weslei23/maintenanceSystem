@@ -1,7 +1,10 @@
 package com.wsdev.maintenanceSystem.Models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import org.hibernate.annotations.CreationTimestamp;
 
+import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.util.List;
 
@@ -14,20 +17,20 @@ public class EmployeeModel
     @GeneratedValue( strategy = GenerationType.IDENTITY )
     private Long id;
 
-    @Column( nullable = false )
+    @NotBlank
     private String name;
 
-    @Column( nullable = false )
+    @NotBlank
     private String telephone;
 
-    @Column( nullable = false )
+    @NotBlank
     private String specialty;
 
     @OneToMany( mappedBy = "employee", cascade = CascadeType.ALL )
     private List<MaintenanceModel> maintenances;
 
-    @Column( nullable = false )
-    private OffsetDateTime createdAt;
+    @CreationTimestamp
+    private LocalDateTime createdAt;
 
     public Long getId()
     {
@@ -79,12 +82,12 @@ public class EmployeeModel
         this.specialty = specialty;
     }
 
-    public OffsetDateTime getCreatedAt()
+    public LocalDateTime getCreatedAt()
     {
         return createdAt;
     }
 
-    public void setCreatedAt( OffsetDateTime createdAt )
+    public void setCreatedAt( LocalDateTime createdAt )
     {
         this.createdAt = createdAt;
     }

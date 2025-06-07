@@ -1,9 +1,10 @@
 package com.wsdev.maintenanceSystem.Models;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
-import java.time.OffsetDateTime;
+import java.time.LocalDateTime;
 
 @Entity
 @Table( name = "tb_maintenance")
@@ -19,6 +20,9 @@ public class MaintenanceModel
     @Enumerated( EnumType.STRING )
     private StatusModel status;
 
+    @Enumerated( EnumType.STRING )
+    private TypeMaterialModel typeMaterial;
+
     @Column( nullable = false )
     private String descriptionService;
 
@@ -30,8 +34,8 @@ public class MaintenanceModel
     @JoinColumn( name = "employee_id" )
     private EmployeeModel employee;
 
-    @Column( nullable = false )
-    private OffsetDateTime createdAt;
+    @CreationTimestamp
+    private LocalDateTime createdAt;
 
     public Long getId()
     {
@@ -93,13 +97,23 @@ public class MaintenanceModel
         this.employee = employee;
     }
 
-    public OffsetDateTime getCreatedAt()
+    public LocalDateTime getCreatedAt()
     {
         return createdAt;
     }
 
-    public void setCreatedAt( OffsetDateTime createdAt )
+    public void setCreatedAt( LocalDateTime createdAt )
     {
         this.createdAt = createdAt;
+    }
+
+    public TypeMaterialModel getTypeMaterial()
+    {
+        return typeMaterial;
+    }
+
+    public void setTypeMaterial( TypeMaterialModel typeMaterial )
+    {
+        this.typeMaterial = typeMaterial;
     }
 }
